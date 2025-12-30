@@ -339,9 +339,11 @@
 
         // --- 2. عداد 2026 ---
         const countTo = new Date("Jan 1, 2026 00:00:00").getTime();
-        setInterval(function() {
+        
+        const x = setInterval(function() {
             const now = new Date().getTime();
             const diff = countTo - now;
+
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -353,6 +355,17 @@
                 <div class="time-box"><span class="time-val">${minutes}</span><span class="time-label">Mins</span></div>
                 <div class="time-box"><span class="time-val">${seconds}</span><span class="time-label">Secs</span></div>
             `;
+
+            // 👇👇 التعديل هنا: لو الوقت خلص 👇👇
+            if (diff < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = `
+                    <h2 style="color: #ff4d6d; font-size: 2rem; animation: pulse 1s infinite;">
+                        🎉 Happy New Year 2026! 🎉
+                    </h2>
+                    <p style="color: #555;">سنة حلوة يا أجمل شهد في الدنيا ❤️</p>
+                `;
+            }
         }, 1000);
 
         // --- 3. إدارة الصوت ---
