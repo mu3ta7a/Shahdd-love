@@ -24,11 +24,6 @@
         /* New Year Button */
         .btn-celebrate { background: linear-gradient(45deg, #ff4d6d, #ff8fa3); color: white; border: none; padding: 20px 20px; border-radius: 50px; font-size: 1.4rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4); margin-top: 10px; width: 95%; font-family: 'Cairo', sans-serif; animation: pulse 2s infinite; }
 
-        /* Love Button */
-        .love-btn-container { text-align: center; margin-bottom: 25px; }
-        .btn-love { background: linear-gradient(45deg, #ff4d6d, #ff8fa3); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.4rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 25px rgba(255, 77, 109, 0.5); transition: transform 0.3s; font-family: 'Reem Kufi', sans-serif; }
-        .btn-love:hover { transform: scale(1.05); }
-
         /* Music Player Advanced */
         .music-list { list-style: none; text-align: right; }
         .song-item { background: #fff5f7; margin: 10px 0; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s all ease; cursor: pointer; border: 2px solid transparent; }
@@ -55,21 +50,18 @@
         .nav-btn { background: white; padding: 15px; border-radius: 20px; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
         /* Overlays */
-        #celebration-overlay, #love-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(5px); }
-        #celebration-overlay { background: radial-gradient(circle, #2b1016 0%, #000000 100%); }
+        #celebration-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #2b1016 0%, #000000 100%); z-index: 2000; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(5px); }
         .celebration-content { z-index: 10; padding: 20px; max-width: 90%; }
-        .popup-content { background: #fff0f3; padding: 40px; border-radius: 30px; max-width: 85%; position: relative; border: 4px solid var(--primary); }
         .msg-container { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 25px; border-radius: 20px; color: white; max-height: 60vh; overflow-y: auto; position: relative; }
-        .close-overlay, .close-popup { position: absolute; top: 10px; right: 15px; font-size: 2rem; color: white; cursor: pointer; z-index: 20; }
-        .close-popup { color: var(--primary); }
+        .close-overlay { position: absolute; top: 10px; right: 15px; font-size: 2rem; color: white; cursor: pointer; z-index: 20; }
         .glow-text { font-family: 'Poppins', sans-serif; font-size: 3rem; color: #fff; text-shadow: 0 0 10px #ff4d6d; animation: bounceIn 2s; margin-bottom: 30px; }
+        .love-msg { font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; font-family: 'Cairo', sans-serif; font-weight: bold; }
         
         .falling-element { position: fixed; top: -30px; animation: fall linear forwards; z-index: -1; text-shadow: 0 0 5px rgba(255, 77, 109, 0.3); }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
         @keyframes bounceIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
-        
         .firework { position: absolute; top: 50%; left: 50%; width: 0.5rem; height: 0.5rem; border-radius: 50%; animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards; }
         @keyframes bang { to { box-shadow: -120px -218.66667px transparent, 248px -16.66667px transparent, 190px 16.66667px transparent; } }
 
@@ -100,10 +92,6 @@
             <h3 style="color: #ff8fa3; font-size: 1.8rem; margin-bottom: 15px;">🎉 !Happy New Year</h3>
             <button class="btn-celebrate" onclick="openCelebration()">🎉 شوفي رسالة 2026 🎉</button>
             <p style="margin-top: 15px; font-weight: bold; color: #555; font-size: 1.1rem;">✨ سنة سعيدة عليكي يا روح قلبي ✨</p>
-        </div>
-
-        <div class="love-btn-container">
-            <button class="btn-love" onclick="showLoveReason()"> <i class="fas fa-heart"></i> ليه بحبك؟ </button>
         </div>
 
         <div class="nav-buttons">
@@ -151,8 +139,19 @@
         </div>
 
         <div class="card" id="message">
-            <div class="section-title">My Message 💌</div>
-            <p style="font-size: 1.3rem; line-height: 1.8; color: #555; font-weight: bold;">لشهد حبيبتي..<br>كل سنة وأنتِ معايا.. بحبك يا نور عيني. ✨</p>
+            <div class="section-title" style="font-size: 2.2rem;">رسالتي ليكي 💌</div>
+            <div style="padding: 20px; border: 3px dashed #ff4d6d; border-radius: 20px; background: rgba(255, 240, 243, 0.5);">
+                <h2 style="color: var(--primary); font-size: 2.8rem; margin-bottom: 20px; font-family: 'Reem Kufi', sans-serif;">
+                    حبيبتي شـهـوتـي ❤️
+                </h2>
+                <p style="font-size: 1.6rem; line-height: 2; color: #590d22; font-weight: 900; font-family: 'Cairo', sans-serif;">
+                    كل سنة وأنتِ معايا، وكل سنة وأنتِ أحلى وأجمل صدفة حصلتلي في عمري كله.<br>
+                    السنة دي مش مجرد رقم جديد، دي حياة جديدة ببدأها وأنتي فيها، لأني مش عايز من الدنيا دي غيرك.<br>
+                    <span style="color: #ff4d6d; font-size: 1.8rem;">حبيت أقولك إني بـحـبـك..</span><br>
+                    وإنك العوض الجميل اللي ربنا رضاني بيه.<br>
+                    ربنا يخليكي ليا يا <span style="color: #ff4d6d;">نور عيني</span>، ويديمك فرحة لقلبي وسر سعادتي طول العمر. ✨💍🌍
+                </p>
+            </div>
         </div>
     </div>
 
@@ -166,14 +165,6 @@
                 <div class="divider" style="color:#ff4d6d; font-size:1.5rem; margin:15px 0;">✦ ✦ ✦</div>
                 <p class="love-msg">"يا رب السنة دي تكون سنة خير وجبر خاطر ليكي يا أحلى <span style="color:#ff4d6d">شهد</span>.. تحققي فيها كل اللي بتحلمي بيه، ربنا يكتب لنا فيها الخير سوا وما يحرمنيش من وجودك ولا ضحكتك أبدا.<br>يا بخت السنين بيكي ويا بختي أنا إنك قدري.. سنة جديدة سعيدة عليكي يا روح قلبي 😘💗"</p>
             </div>
-        </div>
-    </div>
-
-    <div id="love-popup" onclick="closePopup(event)">
-        <div class="popup-content">
-            <span class="close-popup" onclick="closePopup(event)">&times;</span>
-            <h3 style="color: var(--primary); margin-bottom: 20px;">عارفة بحبك ليه؟ 🥰</h3>
-            <p id="popup-text" style="font-size:1.5rem;"></p>
         </div>
     </div>
 
@@ -245,18 +236,6 @@
             document.body.appendChild(element); setTimeout(() => element.remove(), 7000);
         }
         setInterval(createFallingElement, 400);
-
-        // Love Button
-        const loveMessages = ["عشان ضحكتك بتنور يومي ✨", "عشان أطيب قلب 💖", "عشان وجودك نعمة 🙏", "عشان عيونك سحر 👀", "عشان إنتي شهد 🍯"];
-        let availableMessages = [...loveMessages];
-        function showLoveReason() {
-            if (availableMessages.length === 0) availableMessages = [...loveMessages];
-            const randomIndex = Math.floor(Math.random() * availableMessages.length);
-            document.getElementById('popup-text').textContent = availableMessages[randomIndex];
-            availableMessages.splice(randomIndex, 1);
-            document.getElementById('love-popup').style.display = 'flex';
-        }
-        function closePopup(e) { if(e.target.id === 'love-popup' || e.target.classList.contains('close-popup')) document.getElementById('love-popup').style.display = 'none'; }
     </script>
 </body>
 </html>
