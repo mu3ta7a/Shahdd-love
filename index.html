@@ -11,54 +11,69 @@
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Poppins', 'Cairo', sans-serif; background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); min-height: 100vh; color: var(--text); overflow-x: hidden; padding-bottom: 80px; }
         
-        /* Login */
         #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 240, 243, 0.98); backdrop-filter: blur(10px); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
         .login-box { text-align: center; animation: bounceIn 1s; }
         .login-box h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; font-weight: 900; }
         input[type="text"] { padding: 15px; border-radius: 30px; border: 2px solid var(--secondary); font-size: 1.1rem; text-align: center; width: 85%; max-width: 320px; outline: none; transition: 0.3s; font-family: 'Cairo', sans-serif; }
         .btn-enter { margin-top: 25px; padding: 12px 50px; background: var(--primary); color: white; border: none; border-radius: 50px; font-size: 1.3rem; cursor: pointer; }
 
-        /* Main */
         .container { max-width: 600px; margin: 0 auto; padding: 20px; display: none; animation: slideUp 1s; }
         .header { text-align: center; margin-bottom: 30px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .card { background: var(--card-bg); border-radius: 25px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 40px rgba(255, 77, 109, 0.15); text-align: center; position: relative; overflow: hidden; }
-        .section-title { color: var(--primary); font-size: 1.8rem; font-weight: 800; margin-bottom: 15px; border-bottom: 3px dashed #ffccd5; padding-bottom: 10px; display: inline-block; }
         
-        /* Celebrate Button */
-        .btn-celebrate { background: linear-gradient(45deg, #ff4d6d, #ff8fa3); color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4); margin-top: 15px; animation: pulse 2s infinite; }
-        
-        /* Media */
+        /* New Year Button */
+        .btn-celebrate { background: linear-gradient(45deg, #ff4d6d, #ff8fa3); color: white; border: none; padding: 20px 20px; border-radius: 50px; font-size: 1.4rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4); margin-top: 10px; width: 95%; font-family: 'Cairo', sans-serif; animation: pulse 2s infinite; }
+
+        /* Love Button */
+        .love-btn-container { text-align: center; margin-bottom: 25px; }
+        .btn-love { background: linear-gradient(45deg, #ff4d6d, #ff8fa3); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.4rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 25px rgba(255, 77, 109, 0.5); transition: transform 0.3s; font-family: 'Reem Kufi', sans-serif; }
+        .btn-love:hover { transform: scale(1.05); }
+
+        /* Music Player Advanced */
+        .music-list { list-style: none; text-align: right; }
+        .song-item { background: #fff5f7; margin: 10px 0; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s all ease; cursor: pointer; border: 2px solid transparent; }
+        .song-item:hover { background: #ffe0e6; }
+        .song-item.playing { background: white; border-color: var(--primary); box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2); transform: scale(1.02); }
+        .song-info h4 { font-size: 1.4rem; color: var(--text); margin: 0; } 
+        .music-controls { display: flex; align-items: center; gap: 10px; }
+        .timer-text { font-size: 0.9rem; color: var(--primary); font-weight: bold; font-family: monospace; min-width: 45px; text-align: left; direction: ltr; }
+        .play-icon { color: var(--primary); font-size: 1.5rem; width: 30px; text-align: center; }
+        .equalizer { display: none; align-items: flex-end; height: 15px; gap: 2px; }
+        .song-item.playing .equalizer { display: flex; }
+        .bar { width: 3px; background: var(--primary); animation: equalizer 1s infinite ease-in-out; }
+        .bar:nth-child(1) { animation-delay: 0.1s; height: 40%; }
+        .bar:nth-child(2) { animation-delay: 0.2s; height: 80%; }
+        .bar:nth-child(3) { animation-delay: 0.3s; height: 50%; }
+        @keyframes equalizer { 0%, 100% { height: 20%; } 50% { height: 100%; } }
+
+        .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .video-item video { width: 100%; border-radius: 15px; border: 3px solid white; }
         .gallery-scroll { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; }
         .gallery-item { min-width: 250px; height: 350px; border-radius: 20px; overflow: hidden; border: 4px solid white; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .video-item video { width: 100%; border-radius: 15px; border: 3px solid white; }
-        .music-list { list-style: none; text-align: right; }
-        .song-item { background: #fff5f7; margin: 10px 0; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.3s; }
-        .song-item:hover { transform: translateX(-5px); background: #ffe0e6; }
-        .song-info h4 { font-size: 1.4rem; color: var(--text); } 
-        .play-icon { font-size: 1.5rem; color: var(--primary); }
-
         .nav-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 25px; }
         .nav-btn { background: white; padding: 15px; border-radius: 20px; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        
-        /* Overlay */
-        #celebration-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #2b1016 0%, #000000 100%); z-index: 2000; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+
+        /* Overlays */
+        #celebration-overlay, #love-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; backdrop-filter: blur(5px); }
+        #celebration-overlay { background: radial-gradient(circle, #2b1016 0%, #000000 100%); }
         .celebration-content { z-index: 10; padding: 20px; max-width: 90%; }
-        .glow-text { font-family: 'Poppins', sans-serif; font-size: 3rem; color: #fff; text-shadow: 0 0 10px #ff4d6d; animation: bounceIn 2s; margin-bottom: 30px; }
+        .popup-content { background: #fff0f3; padding: 40px; border-radius: 30px; max-width: 85%; position: relative; border: 4px solid var(--primary); }
         .msg-container { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 25px; border-radius: 20px; color: white; max-height: 60vh; overflow-y: auto; position: relative; }
-        .close-overlay { position: absolute; top: 10px; right: 15px; font-size: 2rem; color: white; cursor: pointer; z-index: 20; }
+        .close-overlay, .close-popup { position: absolute; top: 10px; right: 15px; font-size: 2rem; color: white; cursor: pointer; z-index: 20; }
+        .close-popup { color: var(--primary); }
+        .glow-text { font-family: 'Poppins', sans-serif; font-size: 3rem; color: #fff; text-shadow: 0 0 10px #ff4d6d; animation: bounceIn 2s; margin-bottom: 30px; }
         
-        /* Misc */
         .falling-element { position: fixed; top: -30px; animation: fall linear forwards; z-index: -1; text-shadow: 0 0 5px rgba(255, 77, 109, 0.3); }
-        .bg-music-control { position: fixed; bottom: 20px; right: 20px; background: white; padding: 12px; border-radius: 50%; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 999; cursor: pointer; border: 3px solid var(--primary); font-size: 1.5rem; display: none; }
-        
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
         @keyframes bounceIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
         
         .firework { position: absolute; top: 50%; left: 50%; width: 0.5rem; height: 0.5rem; border-radius: 50%; animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards; }
         @keyframes bang { to { box-shadow: -120px -218.66667px transparent, 248px -16.66667px transparent, 190px 16.66667px transparent; } }
+
+        .bg-music-control { position: fixed; bottom: 20px; right: 20px; background: white; padding: 12px; border-radius: 50%; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 999; cursor: pointer; border: 3px solid var(--primary); font-size: 1.5rem; display: none; animation: pulse 2s infinite; }
     </style>
 </head>
 <body>
@@ -82,9 +97,13 @@
         </div>
 
         <div class="card">
-            <h3 style="color: #ff8fa3;">Happy New Year 2026 🎉</h3>
-            <p style="margin: 10px 0; font-weight: bold; color: #555;">السنة بدأت.. بس مفاجأتي ليكي لسه موجودة 😉</p>
-            <button class="btn-celebrate" onclick="openCelebration()">اضغطي هنا لرؤية الرسالة 💌</button>
+            <h3 style="color: #ff8fa3; font-size: 1.8rem; margin-bottom: 15px;">🎉 !Happy New Year</h3>
+            <button class="btn-celebrate" onclick="openCelebration()">🎉 شوفي رسالة 2026 🎉</button>
+            <p style="margin-top: 15px; font-weight: bold; color: #555; font-size: 1.1rem;">✨ سنة سعيدة عليكي يا روح قلبي ✨</p>
+        </div>
+
+        <div class="love-btn-container">
+            <button class="btn-love" onclick="showLoveReason()"> <i class="fas fa-heart"></i> ليه بحبك؟ </button>
         </div>
 
         <div class="nav-buttons">
@@ -124,18 +143,16 @@
         <div class="card" id="music">
             <div class="section-title">Vibes 🎧✨</div>
             <ul class="music-list">
-                <li class="song-item" onclick="playSong('https://g.top4top.io/m_36507j7lw0.mp3')"><div class="song-info"><h4>❤️✨🔥</h4></div><div class="play-icon">▶</div></li>
-                <li class="song-item" onclick="playSong('https://e.top4top.io/m_3650c5stg0.mp3')"><div class="song-info"><h4>🥺🍯💍</h4></div><div class="play-icon">▶</div></li>
-                <li class="song-item" onclick="playSong('https://j.top4top.io/m_3650qtyt70.mp3')"><div class="song-info"><h4>🫂🌎🌸</h4></div><div class="play-icon">▶</div></li>
-                <li class="song-item" onclick="playSong('https://b.top4top.io/m_3650yaltj0.mp3')"><div class="song-info"><h4>💃🥰🎶</h4></div><div class="play-icon">▶</div></li>
+                <li class="song-item" id="song-0" onclick="playSong('https://g.top4top.io/m_36507j7lw0.mp3', 0)"><div class="song-info"><h4>❤️✨🔥</h4><div class="equalizer"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="music-controls"><span class="timer-text" id="timer-0"></span><div class="play-icon" id="icon-0">▶</div></div></li>
+                <li class="song-item" id="song-1" onclick="playSong('https://e.top4top.io/m_3650c5stg0.mp3', 1)"><div class="song-info"><h4>🥺🍯💍</h4><div class="equalizer"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="music-controls"><span class="timer-text" id="timer-1"></span><div class="play-icon" id="icon-1">▶</div></div></li>
+                <li class="song-item" id="song-2" onclick="playSong('https://j.top4top.io/m_3650qtyt70.mp3', 2)"><div class="song-info"><h4>🫂🌎🌸</h4><div class="equalizer"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="music-controls"><span class="timer-text" id="timer-2"></span><div class="play-icon" id="icon-2">▶</div></div></li>
+                <li class="song-item" id="song-3" onclick="playSong('https://b.top4top.io/m_3650yaltj0.mp3', 3)"><div class="song-info"><h4>💃🥰🎶</h4><div class="equalizer"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div><div class="music-controls"><span class="timer-text" id="timer-3"></span><div class="play-icon" id="icon-3">▶</div></div></li>
             </ul>
         </div>
 
         <div class="card" id="message">
             <div class="section-title">My Message 💌</div>
-            <p style="font-size: 1.3rem; line-height: 1.8; color: #555; font-weight: bold;">
-                لشهد حبيبتي..<br>كل سنة وأنتِ معايا.. بحبك يا نور عيني. ✨
-            </p>
+            <p style="font-size: 1.3rem; line-height: 1.8; color: #555; font-weight: bold;">لشهد حبيبتي..<br>كل سنة وأنتِ معايا.. بحبك يا نور عيني. ✨</p>
         </div>
     </div>
 
@@ -146,22 +163,30 @@
             <h1 class="glow-text">Happy New Year 2026 🥂</h1>
             <div class="msg-container">
                 <p class="love-msg">"كل الناس بتحتفل بالسنة الجديدة بس أنا بحتفل إنك لسه معايا فيها.. أنتي أحلى حاجة حصلت لي في السنين اللي فاتت وأجمل أمل في السنين اللي جاية. بحبك ❤️<br>انتهت سنة كنتي أنتي فيها السند والفرحة وبدأت سنة جديدة مش عايز فيها غيرك."</p>
-                <div style="color:#ff4d6d; font-size:1.5rem; margin:15px 0;">✦ ✦ ✦</div>
+                <div class="divider" style="color:#ff4d6d; font-size:1.5rem; margin:15px 0;">✦ ✦ ✦</div>
                 <p class="love-msg">"يا رب السنة دي تكون سنة خير وجبر خاطر ليكي يا أحلى <span style="color:#ff4d6d">شهد</span>.. تحققي فيها كل اللي بتحلمي بيه، ربنا يكتب لنا فيها الخير سوا وما يحرمنيش من وجودك ولا ضحكتك أبدا.<br>يا بخت السنين بيكي ويا بختي أنا إنك قدري.. سنة جديدة سعيدة عليكي يا روح قلبي 😘💗"</p>
             </div>
+        </div>
+    </div>
+
+    <div id="love-popup" onclick="closePopup(event)">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup(event)">&times;</span>
+            <h3 style="color: var(--primary); margin-bottom: 20px;">عارفة بحبك ليه؟ 🥰</h3>
+            <p id="popup-text" style="font-size:1.5rem;"></p>
         </div>
     </div>
 
     <audio id="bg-music" loop><source src="https://b.top4top.io/m_3650brh0f1.mp3" type="audio/mpeg"></audio>
     <audio id="player-music"></audio>
     <audio id="celebration-music" src="https://b.top4top.io/m_3652e5eif0.mp3"></audio>
-
     <div class="bg-music-control" onclick="toggleBgMusic()" id="musicBtn">🎵</div>
 
     <script>
-        var bgMusic = document.getElementById("bg-music");
-        var player = document.getElementById("player-music");
-        var celebMusic = document.getElementById("celebration-music");
+        let currentPlayingIndex = -1;
+        const bgMusic = document.getElementById("bg-music");
+        const celebMusic = document.getElementById("celebration-music");
+        const player = document.getElementById("player-music");
         const allVideos = document.querySelectorAll('video');
 
         function checkPassword() {
@@ -177,55 +202,61 @@
             } else { document.getElementById('error-msg').style.opacity = '1'; }
         }
 
-        function openCelebration() {
-            bgMusic.pause(); allVideos.forEach(v => v.pause()); player.pause();
-            document.getElementById('celebration-overlay').style.display = 'flex';
-            celebMusic.currentTime = 0; celebMusic.play();
+        // Music Player Logic
+        function formatTime(s) { if (isNaN(s)) return "0:00"; const m = Math.floor(s/60); const sc = Math.floor(s%60); return `${m}:${sc < 10 ? '0' : ''}${sc}`; }
+        function resetAllPlayers() {
+            for(let i=0; i<4; i++) {
+                document.getElementById(`song-${i}`).classList.remove('playing');
+                document.getElementById(`icon-${i}`).innerHTML = '▶';
+                document.getElementById(`timer-${i}`).innerHTML = '';
+            }
         }
-
-        function closeCelebration() {
-            document.getElementById('celebration-overlay').style.display = 'none';
-            celebMusic.pause(); bgMusic.play();
+        function playSong(url, index) {
+            if (currentPlayingIndex === index && !player.paused) {
+                player.pause(); document.getElementById(`icon-${index}`).innerHTML = '▶';
+                document.getElementById(`song-${index}`).classList.remove('playing');
+                bgMusic.play(); currentPlayingIndex = -1; return;
+            }
+            bgMusic.pause(); allVideos.forEach(v => v.pause()); celebMusic.pause(); resetAllPlayers();
+            currentPlayingIndex = index; player.src = url; player.play();
+            document.getElementById(`song-${index}`).classList.add('playing');
+            document.getElementById(`icon-${index}`).innerHTML = '⏸';
         }
+        player.addEventListener('timeupdate', () => { if (currentPlayingIndex !== -1) document.getElementById(`timer-${currentPlayingIndex}`).innerHTML = "-" + formatTime(player.duration - player.currentTime); });
+        player.onended = function() { resetAllPlayers(); bgMusic.play(); currentPlayingIndex = -1; };
 
-        function pauseAllVideos() { allVideos.forEach(v => v.pause()); }
-        
-        function playSong(url) {
-            bgMusic.pause(); pauseAllVideos(); celebMusic.pause();
-            player.src = url; player.play();
-            player.onended = function() { bgMusic.play(); };
-        }
+        // Celebration
+        function openCelebration() { bgMusic.pause(); allVideos.forEach(v => v.pause()); player.pause(); resetAllPlayers(); document.getElementById('celebration-overlay').style.display = 'flex'; celebMusic.currentTime = 0; celebMusic.play(); }
+        function closeCelebration() { document.getElementById('celebration-overlay').style.display = 'none'; celebMusic.pause(); bgMusic.play(); }
 
-        function toggleBgMusic() {
-            if (bgMusic.paused) { pauseAllVideos(); player.pause(); bgMusic.play(); } else { bgMusic.pause(); }
-        }
+        // General Audio Control
+        function toggleBgMusic() { if (bgMusic.paused) { allVideos.forEach(v => v.pause()); player.pause(); resetAllPlayers(); bgMusic.play(); } else { bgMusic.pause(); } }
+        allVideos.forEach(video => { video.addEventListener('play', () => { bgMusic.pause(); player.pause(); celebMusic.pause(); resetAllPlayers(); }); video.addEventListener('ended', () => { bgMusic.play(); }); });
 
-        allVideos.forEach(video => {
-            video.addEventListener('play', () => { bgMusic.pause(); player.pause(); celebMusic.pause(); });
-            video.addEventListener('ended', () => { bgMusic.play(); });
-        });
-
+        // Falling Elements
         function createFallingElement() {
-            const element = document.createElement('div');
-            element.classList.add('falling-element');
+            const element = document.createElement('div'); element.classList.add('falling-element');
             const shapes = ['❤️', '✨', 'Shahd', '💖'];
             const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
             element.innerHTML = randomShape;
-            if (randomShape === 'Shahd') {
-                element.style.fontSize = (Math.random() * 15 + 15) + 'px';
-                element.style.fontWeight = 'bold';
-                element.style.color = '#ff4d6d';
-                element.style.fontFamily = "'Reem Kufi', sans-serif";
-            } else {
-                element.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                element.style.color = Math.random() > 0.5 ? '#ff4d6d' : '#ff8fa3';
-            }
-            element.style.left = Math.random() * 100 + 'vw';
-            element.style.animationDuration = Math.random() * 3 + 4 + 's';
-            document.body.appendChild(element);
-            setTimeout(() => element.remove(), 7000);
+            if (randomShape === 'Shahd') { element.style.fontSize = (Math.random() * 15 + 15) + 'px'; element.style.fontWeight = 'bold'; element.style.color = '#ff4d6d'; element.style.fontFamily = "'Reem Kufi', sans-serif"; } 
+            else { element.style.fontSize = (Math.random() * 20 + 10) + 'px'; element.style.color = Math.random() > 0.5 ? '#ff4d6d' : '#ff8fa3'; }
+            element.style.left = Math.random() * 100 + 'vw'; element.style.animationDuration = Math.random() * 3 + 4 + 's';
+            document.body.appendChild(element); setTimeout(() => element.remove(), 7000);
         }
         setInterval(createFallingElement, 400);
+
+        // Love Button
+        const loveMessages = ["عشان ضحكتك بتنور يومي ✨", "عشان أطيب قلب 💖", "عشان وجودك نعمة 🙏", "عشان عيونك سحر 👀", "عشان إنتي شهد 🍯"];
+        let availableMessages = [...loveMessages];
+        function showLoveReason() {
+            if (availableMessages.length === 0) availableMessages = [...loveMessages];
+            const randomIndex = Math.floor(Math.random() * availableMessages.length);
+            document.getElementById('popup-text').textContent = availableMessages[randomIndex];
+            availableMessages.splice(randomIndex, 1);
+            document.getElementById('love-popup').style.display = 'flex';
+        }
+        function closePopup(e) { if(e.target.id === 'love-popup' || e.target.classList.contains('close-popup')) document.getElementById('love-popup').style.display = 'none'; }
     </script>
 </body>
 </html>
