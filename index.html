@@ -4,293 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shahd's World ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@400;600;800&family=Reem+Kufi:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #ff4d6d;
-            --secondary: #ff8fa3;
-            --bg: #fff0f3;
-            --card-bg: #ffffff;
-            --text: #590d22;
-        }
-
+        :root { --primary: #ff4d6d; --secondary: #ff8fa3; --bg: #fff0f3; --card-bg: #ffffff; --text: #590d22; }
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-        body {
-            font-family: 'Poppins', 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-            min-height: 100vh;
-            color: var(--text);
-            overflow-x: hidden;
-            padding-bottom: 80px;
-        }
-
-        /* --- شاشة الباسورد --- */
-        #login-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 240, 243, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-        }
-
+        body { font-family: 'Poppins', 'Cairo', sans-serif; background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); min-height: 100vh; color: var(--text); overflow-x: hidden; padding-bottom: 80px; }
+        
+        /* Login */
+        #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 240, 243, 0.98); backdrop-filter: blur(10px); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
         .login-box { text-align: center; animation: bounceIn 1s; }
         .login-box h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; font-weight: 900; }
-        .login-box p { font-size: 1.2rem; color: #555; margin-bottom: 25px; font-weight: bold; }
+        input[type="text"] { padding: 15px; border-radius: 30px; border: 2px solid var(--secondary); font-size: 1.1rem; text-align: center; width: 85%; max-width: 320px; outline: none; transition: 0.3s; font-family: 'Cairo', sans-serif; }
+        .btn-enter { margin-top: 25px; padding: 12px 50px; background: var(--primary); color: white; border: none; border-radius: 50px; font-size: 1.3rem; cursor: pointer; }
+
+        /* Main */
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; display: none; animation: slideUp 1s; }
+        .header { text-align: center; margin-bottom: 30px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .card { background: var(--card-bg); border-radius: 25px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 40px rgba(255, 77, 109, 0.15); text-align: center; position: relative; overflow: hidden; }
+        .section-title { color: var(--primary); font-size: 1.8rem; font-weight: 800; margin-bottom: 15px; border-bottom: 3px dashed #ffccd5; padding-bottom: 10px; display: inline-block; }
         
-        input[type="text"] {
-            padding: 15px;
-            border-radius: 30px;
-            border: 2px solid var(--secondary);
-            font-size: 1.1rem;
-            text-align: center;
-            width: 85%;
-            max-width: 320px;
-            outline: none;
-            transition: 0.3s;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 77, 109, 0.3); transform: scale(1.05); }
-
-        .btn-enter {
-            margin-top: 25px;
-            padding: 12px 50px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
-            font-family: 'Cairo', sans-serif;
-            font-weight: bold;
-        }
-
-        /* --- الصفحة الرئيسية --- */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            display: none;
-            animation: slideUp 1s;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .header h1 { font-size: 3rem; font-weight: 900; line-height: 1.2; }
-        .header p { font-size: 1.2rem; opacity: 0.9; margin-top: 5px; }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 25px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 40px rgba(255, 77, 109, 0.15);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-title {
-            color: var(--primary);
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            border-bottom: 3px dashed #ffccd5;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        .countdown-grid { display: flex; justify-content: center; gap: 10px; margin-top: 15px; direction: ltr; }
-        .time-box { background: #fff0f3; padding: 10px; border-radius: 15px; min-width: 70px; border: 2px solid var(--secondary); }
-        .time-val { font-size: 1.8rem; font-weight: bold; color: var(--primary); display: block; }
-        .time-label { font-size: 0.8rem; color: #888; text-transform: uppercase; }
-
-        .gallery-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding-bottom: 15px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-        .gallery-item {
-            min-width: 250px;
-            height: 350px;
-            border-radius: 20px;
-            scroll-snap-align: center;
-            overflow: hidden;
-            border: 4px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-        }
+        /* Celebrate Button */
+        .btn-celebrate { background: linear-gradient(45deg, #ff4d6d, #ff8fa3); color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4); margin-top: 15px; animation: pulse 2s infinite; }
+        
+        /* Media */
+        .gallery-scroll { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; }
+        .gallery-item { min-width: 250px; height: 350px; border-radius: 20px; overflow: hidden; border: 4px solid white; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-
-        .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .video-item video {
-            width: 100%;
-            border-radius: 15px;
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
+        .video-item video { width: 100%; border-radius: 15px; border: 3px solid white; }
         .music-list { list-style: none; text-align: right; }
-        .song-item {
-            background: #fff5f7;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .song-item:hover { background: #ffe0e6; transform: translateX(-5px); }
-        .song-info h4 { font-size: 1.4rem; color: var(--text); letter-spacing: 2px;} 
-        .play-icon { color: var(--primary); font-size: 1.5rem; }
+        .song-item { background: #fff5f7; margin: 10px 0; padding: 15px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.3s; }
+        .song-item:hover { transform: translateX(-5px); background: #ffe0e6; }
+        .song-info h4 { font-size: 1.4rem; color: var(--text); } 
+        .play-icon { font-size: 1.5rem; color: var(--primary); }
 
         .nav-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 25px; }
-        .nav-btn {
-            background: white;
-            padding: 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            color: var(--primary);
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: transform 0.2s;
-        }
-        .nav-btn:active { transform: scale(0.95); }
-
-        .heart-bg {
-            position: fixed;
-            top: -20px;
-            color: rgba(255, 255, 255, 0.6);
-            animation: fall linear forwards;
-            z-index: -1;
-        }
-        @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
+        .nav-btn { background: white; padding: 15px; border-radius: 20px; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
+        /* Overlay */
+        #celebration-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #2b1016 0%, #000000 100%); z-index: 2000; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .celebration-content { z-index: 10; padding: 20px; max-width: 90%; }
+        .glow-text { font-family: 'Poppins', sans-serif; font-size: 3rem; color: #fff; text-shadow: 0 0 10px #ff4d6d; animation: bounceIn 2s; margin-bottom: 30px; }
+        .msg-container { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 25px; border-radius: 20px; color: white; max-height: 60vh; overflow-y: auto; position: relative; }
+        .close-overlay { position: absolute; top: 10px; right: 15px; font-size: 2rem; color: white; cursor: pointer; z-index: 20; }
+        
+        /* Misc */
+        .falling-element { position: fixed; top: -30px; animation: fall linear forwards; z-index: -1; text-shadow: 0 0 5px rgba(255, 77, 109, 0.3); }
+        .bg-music-control { position: fixed; bottom: 20px; right: 20px; background: white; padding: 12px; border-radius: 50%; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 999; cursor: pointer; border: 3px solid var(--primary); font-size: 1.5rem; display: none; }
+        
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         @keyframes bounceIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-
-        .bg-music-control {
-            position: fixed;
-            bottom: 20px; right: 20px;
-            background: white;
-            padding: 12px;
-            border-radius: 50%;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 999;
-            cursor: pointer;
-            border: 3px solid var(--primary);
-            font-size: 1.5rem;
-            display: none;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        /* --- شاشة الاحتفال (Overlay) --- */
-        #celebration-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #2b1016 0%, #000000 100%);
-            z-index: 2000;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .celebration-content {
-            z-index: 10;
-            padding: 20px;
-            max-width: 90%;
-            width: 100%;
-        }
-
-        .glow-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            color: #fff;
-            text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d, 0 0 40px #ff4d6d;
-            animation: bounceIn 2s;
-            margin-bottom: 30px;
-            line-height: 1.2;
-        }
-
-        .msg-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 77, 109, 0.3);
-            box-shadow: 0 0 30px rgba(255, 77, 109, 0.2);
-            color: white;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        .love-msg {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 10px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: bold;
-        }
-
-        .divider {
-            color: #ff4d6d;
-            font-size: 1.5rem;
-            margin: 15px 0;
-            opacity: 0.8;
-        }
-
-        /* أنيميشن ظهور الرسائل */
-        .slide-in-1 { animation: fadeInUp 1.5s ease forwards; opacity: 0; animation-delay: 0.5s; }
-        .slide-in-2 { animation: fadeInUp 1.5s ease forwards; opacity: 0; animation-delay: 5s; }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* --- Fireworks Effect --- */
-        .firework {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 0.5rem; height: 0.5rem;
-            border-radius: 50%;
-            box-shadow: -120px -218.66667px blue, 248px -16.66667px #00ff84, 190px 16.66667px red, -113px -308.66667px #ff009d, -109px -287.66667px #00ff84, -50px -313.66667px blue, 226px -31.66667px #ff009d, 180px -351.66667px #ff009d, -12px -338.66667px blue, 220px -388.66667px #99ff00, -69px -27.66667px #ff009d, -111px -339.66667px #6200ff, 155px -237.66667px #00ff84, -152px -380.66667px #00ff84, -50px -37.66667px #00ff84, -95px -175.66667px blue, -88px 10.66667px #ff009d, 112px -309.66667px #99ff00, 30px -410.66667px #ff009d, -198px -202.66667px #45ff00;
-            animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
-            z-index: 1;
-        }
-        .firework:nth-child(2) { animation-duration: 1.25s, 1.25s, 6s; animation-delay: 1.25s, 1.25s, 1.25s; }
-        .firework:nth-child(3) { animation-duration: 1.25s, 1.25s, 6s; animation-delay: 2.5s, 2.5s, 2.5s; }
-
-        @keyframes bang {
-          to { box-shadow: -120px -218.66667px transparent, 248px -16.66667px transparent, 190px 16.66667px transparent, -113px -308.66667px transparent, -109px -287.66667px transparent, -50px -313.66667px transparent, 226px -31.66667px transparent, 180px -351.66667px transparent, -12px -338.66667px transparent, 220px -388.66667px transparent, -69px -27.66667px transparent, -111px -339.66667px transparent, 155px -237.66667px transparent, -152px -380.66667px transparent, -50px -37.66667px transparent, -95px -175.66667px transparent, -88px 10.66667px transparent, 112px -309.66667px transparent, 30px -410.66667px transparent, -198px -202.66667px transparent; }
-        }
-        @keyframes gravity { to { transform: translate(-50%, 200px); opacity: 0; } }
-        @keyframes position { 0% { top: 30%; left: 30%; } 100% { top: 20%; left: 80%; } }
+        @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
+        
+        .firework { position: absolute; top: 50%; left: 50%; width: 0.5rem; height: 0.5rem; border-radius: 50%; animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards; }
+        @keyframes bang { to { box-shadow: -120px -218.66667px transparent, 248px -16.66667px transparent, 190px 16.66667px transparent; } }
     </style>
 </head>
 <body>
@@ -299,16 +67,14 @@
         <div class="login-box">
             <h2 style="font-family: 'Poppins';">Shahd's Zone 👑</h2>
             <p>⛔ للجميلات فقط.. ممنوع دخول أي حد غيرها</p>
-            
-            <input type="text" id="passInput" placeholder="تاريخ ميلاد أجمل واحدة في الدنيا 🎂">
+            <input type="text" id="passInput" placeholder="تاريخ ميلاد القمر 🎂">
             <br>
             <button class="btn-enter" onclick="checkPassword()">دخول</button>
-            <p id="error-msg" style="color: #e63946; margin-top: 15px; opacity: 0; font-weight: bold;">مش عارفة التاريخ؟! أخص عليكي يا شهد 😂💔</p>
+            <p id="error-msg" style="color: #e63946; margin-top: 15px; opacity: 0; font-weight: bold;">نسيتي عيد ميلادك يا شهد؟ 😂💔</p>
         </div>
     </div>
 
     <div class="container" id="main-app">
-        
         <div class="header">
             <p style="font-family: 'Poppins'; letter-spacing: 2px; text-transform: uppercase;">Especially For</p>
             <h1>SHAHD ❤️</h1>
@@ -316,9 +82,9 @@
         </div>
 
         <div class="card">
-            <h3 style="color: #ff8fa3;">New Year Countdown 🎉</h3>
-            <div class="countdown-grid" id="countdown"></div>
-            <p style="margin-top: 10px; font-weight: bold; color: #555;">فاضل شوية وتيجي 2026 ✨</p>
+            <h3 style="color: #ff8fa3;">Happy New Year 2026 🎉</h3>
+            <p style="margin: 10px 0; font-weight: bold; color: #555;">السنة بدأت.. بس مفاجأتي ليكي لسه موجودة 😉</p>
+            <button class="btn-celebrate" onclick="openCelebration()">اضغطي هنا لرؤية الرسالة 💌</button>
         </div>
 
         <div class="nav-buttons">
@@ -330,8 +96,6 @@
 
         <div class="card" id="gallery">
             <div class="section-title">القمر لما يطل 🌙✨</div>
-            <p style="font-size: 0.9rem; color: #777; margin-bottom: 15px;">(يا أرض احفظي ما عليكي)</p>
-            
             <div class="gallery-scroll">
                 <div class="gallery-item"><img src="https://e.top4top.io/p_3650kwqdm0.jpeg"></div>
                 <div class="gallery-item"><img src="https://f.top4top.io/p_3650zmwpj1.jpeg"></div>
@@ -360,218 +124,108 @@
         <div class="card" id="music">
             <div class="section-title">Vibes 🎧✨</div>
             <ul class="music-list">
-                <li class="song-item" onclick="playSong('https://g.top4top.io/m_36507j7lw0.mp3')">
-                    <div class="song-info"><h4>❤️✨🔥</h4></div>
-                    <div class="play-icon">▶</div>
-                </li>
-                <li class="song-item" onclick="playSong('https://e.top4top.io/m_3650c5stg0.mp3')">
-                    <div class="song-info"><h4>🥺🍯💍</h4></div>
-                    <div class="play-icon">▶</div>
-                </li>
-                <li class="song-item" onclick="playSong('https://j.top4top.io/m_3650qtyt70.mp3')">
-                    <div class="song-info"><h4>🫂🌎🌸</h4></div>
-                    <div class="play-icon">▶</div>
-                </li>
-                <li class="song-item" onclick="playSong('https://b.top4top.io/m_3650yaltj0.mp3')">
-                    <div class="song-info"><h4>💃🥰🎶</h4></div>
-                    <div class="play-icon">▶</div>
-                </li>
+                <li class="song-item" onclick="playSong('https://g.top4top.io/m_36507j7lw0.mp3')"><div class="song-info"><h4>❤️✨🔥</h4></div><div class="play-icon">▶</div></li>
+                <li class="song-item" onclick="playSong('https://e.top4top.io/m_3650c5stg0.mp3')"><div class="song-info"><h4>🥺🍯💍</h4></div><div class="play-icon">▶</div></li>
+                <li class="song-item" onclick="playSong('https://j.top4top.io/m_3650qtyt70.mp3')"><div class="song-info"><h4>🫂🌎🌸</h4></div><div class="play-icon">▶</div></li>
+                <li class="song-item" onclick="playSong('https://b.top4top.io/m_3650yaltj0.mp3')"><div class="song-info"><h4>💃🥰🎶</h4></div><div class="play-icon">▶</div></li>
             </ul>
         </div>
 
         <div class="card" id="message">
             <div class="section-title">My Message 💌</div>
             <p style="font-size: 1.3rem; line-height: 1.8; color: #555; font-weight: bold;">
-                لشهد حبيبتي..<br>
-                كل سنة وأنتِ معايا، وكل سنة وأنتِ أحلى حاجة حصلتلي.<br>
-                حبيت أقولك إني بحبك..<br>
-                وربنا يخليكي ليا يا نور عيني. ✨
+                لشهد حبيبتي..<br>كل سنة وأنتِ معايا.. بحبك يا نور عيني. ✨
             </p>
         </div>
-
     </div>
 
     <div id="celebration-overlay">
-        <div class="firework"></div>
-        <div class="firework"></div>
-        <div class="firework"></div>
-        
+        <span class="close-overlay" onclick="closeCelebration()">&times;</span>
+        <div class="firework"></div><div class="firework"></div><div class="firework"></div>
         <div class="celebration-content">
             <h1 class="glow-text">Happy New Year 2026 🥂</h1>
-            
             <div class="msg-container">
-                <p class="love-msg slide-in-1">
-                    "كل الناس بتحتفل بالسنة الجديدة بس أنا بحتفل إنك لسه معايا فيها.. أنتي أحلى حاجة حصلت لي في السنين اللي فاتت وأجمل أمل في السنين اللي جاية. بحبك ❤️<br>
-                    انتهت سنة كنتي أنتي فيها السند والفرحة وبدأت سنة جديدة مش عايز فيها غيرك.. كل سنة وأنتي مالية قلبي وحياتي."
-                </p>
-                
-                <div class="divider">✦ ✦ ✦</div>
-
-                <p class="love-msg slide-in-2">
-                    "مش مهم السنة رقم كام المهم إننا سوا كل عام وأنتي حبيبتي وبنتي وصاحبتي وأغلى حاجة في دنيتي.<br>
-                    يا رب السنة دي تكون سنة خير وجبر خاطر ليكي يا أحلى <span style="color:#ff4d6d">شهد</span>.. تحققي فيها كل اللي بتحلمي بيه، ربنا يكتب لنا فيها الخير سوا وما يحرمنيش من وجودك ولا ضحكتك أبدا.<br>
-                    يا بخت السنين بيكي ويا بختي أنا إنك قدري.. سنة جديدة سعيدة عليكي يا روح قلبي 😘💗💗💗💗"
-                </p>
+                <p class="love-msg">"كل الناس بتحتفل بالسنة الجديدة بس أنا بحتفل إنك لسه معايا فيها.. أنتي أحلى حاجة حصلت لي في السنين اللي فاتت وأجمل أمل في السنين اللي جاية. بحبك ❤️<br>انتهت سنة كنتي أنتي فيها السند والفرحة وبدأت سنة جديدة مش عايز فيها غيرك."</p>
+                <div style="color:#ff4d6d; font-size:1.5rem; margin:15px 0;">✦ ✦ ✦</div>
+                <p class="love-msg">"يا رب السنة دي تكون سنة خير وجبر خاطر ليكي يا أحلى <span style="color:#ff4d6d">شهد</span>.. تحققي فيها كل اللي بتحلمي بيه، ربنا يكتب لنا فيها الخير سوا وما يحرمنيش من وجودك ولا ضحكتك أبدا.<br>يا بخت السنين بيكي ويا بختي أنا إنك قدري.. سنة جديدة سعيدة عليكي يا روح قلبي 😘💗"</p>
             </div>
         </div>
     </div>
 
-    <audio id="bg-music"></audio>
+    <audio id="bg-music" loop><source src="https://b.top4top.io/m_3650brh0f1.mp3" type="audio/mpeg"></audio>
     <audio id="player-music"></audio>
     <audio id="celebration-music" src="https://b.top4top.io/m_3652e5eif0.mp3"></audio>
 
-    <div class="bg-music-control" onclick="toggleBgMusic()" id="musicBtn">
-        🎵
-    </div>
+    <div class="bg-music-control" onclick="toggleBgMusic()" id="musicBtn">🎵</div>
 
     <script>
-        // --- 0. إعدادات قائمة التشغيل (Playlist) ---
-        // بما أنك حطيت لينك واحد للخلفية في الكود الأصلي، هنستخدمه هنا
-        const bgPlaylist = [
-            "https://i.top4top.io/m_3650rdy1b1.mp3"
-        ];
-        let currentTrackIndex = 0; 
         var bgMusic = document.getElementById("bg-music");
+        var player = document.getElementById("player-music");
+        var celebMusic = document.getElementById("celebration-music");
+        const allVideos = document.querySelectorAll('video');
 
-        function initBgMusic() {
-            bgMusic.src = bgPlaylist[currentTrackIndex];
-            bgMusic.volume = 0.5;
-            
-            bgMusic.addEventListener('ended', function() {
-                // لو حبيت تضيف أغاني تانية للقائمة، الكود ده هيشغلهم بالترتيب
-                currentTrackIndex++;
-                if (currentTrackIndex >= bgPlaylist.length) {
-                    currentTrackIndex = 0; 
-                }
-                bgMusic.src = bgPlaylist[currentTrackIndex];
-                bgMusic.play().catch(e => console.log("Auto-play blocked"));
-            });
-        }
-
-        // --- 1. منطق الباسورد (شهد 22/11) ---
         function checkPassword() {
-            var input = document.getElementById('passInput').value;
-            // 22/11
-            if (input === "22/11" || input === "٢٢/١١") { 
+            var input = document.getElementById('passInput').value.trim();
+            if (input === "22/11" || input === "٢٢/١١" || input === "22/11/2005") { 
                 document.getElementById('login-screen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('login-screen').style.display = 'none';
                     document.getElementById('main-app').style.display = 'block';
                     document.getElementById('musicBtn').style.display = 'block';
-                    
-                    initBgMusic();
-                    bgMusic.play().catch(e => console.log("Audio play failed"));
+                    bgMusic.volume = 0.5; bgMusic.play();
                 }, 500);
-            } else {
-                var err = document.getElementById('error-msg');
-                err.style.opacity = '1';
-                document.getElementById('passInput').style.borderColor = "red";
-            }
+            } else { document.getElementById('error-msg').style.opacity = '1'; }
         }
 
-        // --- 2. عداد 2026 والاحتفال ---
-        const countTo = new Date("Jan 1, 2026 00:00:00").getTime();
+        function openCelebration() {
+            bgMusic.pause(); allVideos.forEach(v => v.pause()); player.pause();
+            document.getElementById('celebration-overlay').style.display = 'flex';
+            celebMusic.currentTime = 0; celebMusic.play();
+        }
+
+        function closeCelebration() {
+            document.getElementById('celebration-overlay').style.display = 'none';
+            celebMusic.pause(); bgMusic.play();
+        }
+
+        function pauseAllVideos() { allVideos.forEach(v => v.pause()); }
         
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const diff = countTo - now;
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = `
-                <div class="time-box"><span class="time-val">${days}</span><span class="time-label">Days</span></div>
-                <div class="time-box"><span class="time-val">${hours}</span><span class="time-label">Hrs</span></div>
-                <div class="time-box"><span class="time-val">${minutes}</span><span class="time-label">Mins</span></div>
-                <div class="time-box"><span class="time-val">${seconds}</span><span class="time-label">Secs</span></div>
-            `;
-
-            // اللحظة الحاسمة
-            if (diff < 0) {
-                clearInterval(x);
-                startNewYearCelebration();
-            }
-        }, 1000);
-
-        function startNewYearCelebration() {
-            // 1. وقف كل الأصوات القديمة
-            bgMusic.pause();
-            stopAllVideos();
-            player.pause();
-
-            // 2. إخفاء زر الموسيقى العائم
-            document.getElementById('musicBtn').style.display = 'none';
-
-            // 3. إظهار شاشة الاحتفال
-            const overlay = document.getElementById('celebration-overlay');
-            overlay.style.display = 'flex';
-
-            // 4. تشغيل أغنية الاحتفال الخاصة
-            const celebrationAudio = document.getElementById('celebration-music');
-            celebrationAudio.volume = 1.0; 
-            celebrationAudio.play().catch(e => console.log("User interaction needed first"));
-        }
-
-        // --- 3. إدارة الصوت الشاملة ---
-        var player = document.getElementById("player-music");
-        const allVideos = document.querySelectorAll('video');
-
-        function stopAllVideos() {
-            allVideos.forEach(v => v.pause());
-        }
-
         function playSong(url) {
-            bgMusic.pause();    
-            stopAllVideos();    
-            player.src = url;
-            player.play();
-            player.onended = function() {
-                bgMusic.play();
-            };
+            bgMusic.pause(); pauseAllVideos(); celebMusic.pause();
+            player.src = url; player.play();
+            player.onended = function() { bgMusic.play(); };
         }
 
         function toggleBgMusic() {
-            if (bgMusic.paused) {
-                stopAllVideos(); 
-                player.pause();  
-                bgMusic.play();
-            } else {
-                bgMusic.pause();
-            }
+            if (bgMusic.paused) { pauseAllVideos(); player.pause(); bgMusic.play(); } else { bgMusic.pause(); }
         }
 
         allVideos.forEach(video => {
-            video.addEventListener('play', () => {
-                bgMusic.pause(); 
-                player.pause();  
-                
-                allVideos.forEach(otherVideo => {
-                    if (otherVideo !== video) {
-                        otherVideo.pause();
-                    }
-                });
-            });
-
-            video.addEventListener('ended', () => {
-                bgMusic.play(); 
-            });
+            video.addEventListener('play', () => { bgMusic.pause(); player.pause(); celebMusic.pause(); });
+            video.addEventListener('ended', () => { bgMusic.play(); });
         });
 
-        // --- 4. القلوب ---
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-bg');
-            heart.innerHTML = Math.random() > 0.5 ? '❤️' : '✨';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 7000);
+        function createFallingElement() {
+            const element = document.createElement('div');
+            element.classList.add('falling-element');
+            const shapes = ['❤️', '✨', 'Shahd', '💖'];
+            const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+            element.innerHTML = randomShape;
+            if (randomShape === 'Shahd') {
+                element.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                element.style.fontWeight = 'bold';
+                element.style.color = '#ff4d6d';
+                element.style.fontFamily = "'Reem Kufi', sans-serif";
+            } else {
+                element.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                element.style.color = Math.random() > 0.5 ? '#ff4d6d' : '#ff8fa3';
+            }
+            element.style.left = Math.random() * 100 + 'vw';
+            element.style.animationDuration = Math.random() * 3 + 4 + 's';
+            document.body.appendChild(element);
+            setTimeout(() => element.remove(), 7000);
         }
-        setInterval(createHeart, 400);
-
+        setInterval(createFallingElement, 400);
     </script>
 </body>
 </html>
